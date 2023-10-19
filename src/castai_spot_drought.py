@@ -5,7 +5,7 @@ castai_api_key: str = os.getenv("CASTAI_API_KEY")
 
 organization_id: str = "CASTAI_ORGANIZATION_ID"
 
-cluster_id: str = "CASTAI_CLUSTER_ID"
+cluster_id: str = "CASTAI_CLUSTER_ID"1
 
 aks_instance_families: list = [
     "standard_DADSv5",
@@ -265,11 +265,11 @@ def interactive_mode():
             family_choice = input("Enter your choice (a/b/c): ")
 
             if family_choice == "a":
-                families = gke_instance_families
+                families = aks_instance_families
             elif family_choice == "b":
                 families = eks_instance_families
             elif family_choice == "c":
-                families = aks_instance_families
+                families = gke_instance_families
             else:
                 print("Invalid choice for instance family. Try again.")
                 continue
