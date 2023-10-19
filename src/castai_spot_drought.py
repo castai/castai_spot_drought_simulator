@@ -5,7 +5,7 @@ castai_api_key: str = os.getenv("CASTAI_API_KEY")
 
 organization_id: str = "CASTAI_ORGANIZATION_ID"
 
-cluster_id: str = "CASTAI_CLUSTER_ID"1
+cluster_id: str = "CASTAI_CLUSTER_ID"
 
 aks_instance_families: list = [
     "standard_DADSv5",
