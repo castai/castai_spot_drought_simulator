@@ -209,8 +209,8 @@ blacklist_headers: dict = {
 
 
 def add_to_blacklist(instance_families: list) -> list:
-    add_blacklist_url = "https://api.cast.ai/v1/inventory/blacklist/add"
-    responses = []
+    add_blacklist_url: str = "https://api.cast.ai/v1/inventory/blacklist/add"
+    responses: list = []
     for family in instance_families:
         payload = {
             "lifecycle": "spot",
