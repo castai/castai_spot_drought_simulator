@@ -259,9 +259,9 @@ def interactive_mode():
 
         if choice in ["1", "3"]:
             print("Select instance family list:")
-            print("a: GKE")
+            print("a: AKS")
             print("b: EKS")
-            print("c: AKS")
+            print("c: GKE")
             family_choice = input("Enter your choice (a/b/c): ")
 
             if family_choice == "a":
