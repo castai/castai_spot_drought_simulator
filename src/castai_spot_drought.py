@@ -13,13 +13,13 @@ blacklist_headers: dict = {
 
 def extract_instance_families() -> list:
     filter_instance_types_url: str = f"https://api.cast.ai/v1/kubernetes/clusters/{cluster_id}/filter-instance-types"
-    headers = {
+    headers: dict = {
         "accept": "application/json",
         "content-type": "application/json",
         "X-API-Key": f"{castai_api_key}"
     }
-    response = requests.post(filter_instance_types_url, headers=headers)
-    available_instance_types = response.json()
+    response: requests.Response = requests.post(filter_instance_types_url, headers=headers)
+    available_instance_types: dict = response.json()
     return list(set([instance["family"] for instance in available_instance_types["availableInstanceTypes"]]))
 
 
@@ -27,7 +27,7 @@ def add_to_blacklist(instance_families: list) -> list:
     add_blacklist_url: str = "https://api.cast.ai/v1/inventory/blacklist/add"
     responses: list = []
     for family in instance_families:
-        payload = {
+        payload: dict = {
             "lifecycle": "spot",
             "organizationId": f"{organization_id}",
             "clusterId": f"{cluster_id}",
@@ -63,7 +63,7 @@ def remove_from_blacklist(instance_families: list) -> list:
 
 
 def interactive_mode():
-    families = extract_instance_families()
+    families: list = extract_instance_families()
     while True:
         print("Choose an option:")
         print("1: Add to blacklist")
@@ -71,7 +71,7 @@ def interactive_mode():
         print("3: Remove from blacklist")
         print("4: Exit")
 
-        choice = input("Enter your choice (1/2/3/4): ")
+        choice: str = input("Enter your choice (1/2/3/4): ")
 
         if choice == "1":
             add_responses = add_to_blacklist(families)
