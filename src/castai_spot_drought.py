@@ -36,7 +36,7 @@ def add_to_blacklist(instance_families: list) -> list:
         responses.append(
             requests.post(add_blacklist_url, json=payload, headers=blacklist_headers)
         )
-    return responses
+    return [response.text for response in responses]
 
 
 def get_blacklist() -> str:
